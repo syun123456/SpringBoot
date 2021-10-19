@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    username: test
+    password: javatest
+    url: jdbc:sqlserver://0.0.0.0:1433;DatabaseName=JavaTest
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
