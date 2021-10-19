@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: test
+    password: javatest
+    url: jdbc:sqlserver://0.0.0.0:1433;DatabaseName=JavaTest
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+# mybatis核心配置  
+mybatis:  type-aliases-package: com.syun.pojo
+  mapper-locations:  - classpath:mybatis/mapper/*.xml
