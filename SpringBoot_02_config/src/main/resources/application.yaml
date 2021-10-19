@@ -1,0 +1,34 @@
+# 可以透過debug=true查看那些自動配置類(xxxAutoConfiguration)生效
+debug: true
+
+# yaml可以給java類中的資料成員授予值
+person: 
+  name: syun${random.uuid}
+  age: ${random.int}
+  happy: false
+  birth: 2020/01/01
+  #maps: {k1: v2,k2: v2}
+  maps:
+    k1: v1
+    k2: v2
+  #lists: [code, music]
+  lists:
+    - code
+    - music
+  dog:
+    name: ${person.hello:hello}_Cute
+    age: 3
+  hello: hihi
+    
+# 如果springboot有設定多的環境，可以選擇要啟用哪一個
+server:  port: 8081
+spring:  profiles:    active:    - test
+
+---
+server:  port: 8082
+spring:  profiles: dev
+  
+---
+server:  port: 8083
+spring:
+  profiles: test
