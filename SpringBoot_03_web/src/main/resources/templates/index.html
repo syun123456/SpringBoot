@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form class="form-signin" th:action="@{/user/login}" method="post">
+		<h1 th:text="#{login.tip}">Sign in</h1>
+		<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+		<label th:text="#{login.username}">UserName</label>
+		<input type="text" name="username" placeholder="Username" required="" autofocus=""><br/>
+		<label th:text="#{login.password}">Password</label>
+		<input type="password" name="password" placeholder="Password" required="" autofocus=""><br/>
+		<div>
+			<label><input type="checkbox" value="remember-me">[[#{login.remember}]]</label>
+		</div>
+		<button type="submit">[[#{login.sign}]]</button><br/>
+		<a th:href="@{/index.html(l='zh_CN')}">中文</a>
+		<a th:href="@{/index.html(l='en_US')}">English</a>
+	</form>
+
+
+</body>
+</html>
+
+<!-- 要使用thymeleaf的工具前面要加th:XXX -->
+<!-- 使用資源th:src="@{url}" 或連結 th:href="@{url}"要協帶參數用()-->
+<!-- 使用message取寫好的文字資訊 th:xxx="#{}"-->
+<!-- 使用${}取變數 -->
+<!-- th:fragment取出想要的部分，由th:insert或th:replace="~{}"放在想要的其他頁面，可以協帶參數做判斷用 -->

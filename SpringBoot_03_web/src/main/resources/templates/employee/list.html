@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div th:insert="~{commons/commons::topBar}"></div>
+
+<a th:href="@{/emp}">新增員工</a>
+
+<div>
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>lastName</th>
+				<th>email</th>
+				<th>gender</th>
+				<th>department</th>
+				<th>birth</th>
+				<th>action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="emp:${emps}">
+				<td th:text="${emp.getId()}"></td>
+				<td th:text="${emp.getLastName()}"></td>
+				<td th:text="${emp.getEmail()}"></td>
+				<td th:text="${emp.getGender()==0?'女':'男'}"></td>
+				<td>[[${emp.getDepartment().getDepartmentName()}]]</td>
+				<td th:text="${#dates.format(emp.getBirth(), 'yyyy/MM/dd')}"></td>
+				<td>
+					<a th:href="@{/emp/}+${emp.getId()}">修改</a>
+					<a th:href="@{/delemp/}+${emp.getId()}">刪除</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<a th:replace="~{commons/commons::botBar}"></a>
+
+</body>
+</html>

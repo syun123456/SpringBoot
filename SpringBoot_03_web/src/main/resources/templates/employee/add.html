@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div th:insert="~{commons/commons::topBar}"></div>
+
+<div>
+	<form th:action="@{/emp}" method="post">
+		<label>LastName</label><input type="text" name="lastName" placeholder="syun"><br/>
+		<label>Email</label><input type="email" name="email" placeholder="syun@gmail.com">
+		<div>
+			<label>Gender</label>
+				<input type="radio" name="gender" value="1"><label>男</label>
+				<input type="radio" name="gender" value="0"><label>女</label>
+		</div>
+		<div>
+			<label>department</label>
+			<select name="department.id">
+				<option th:each="dept:${departments}" th:text="${dept.getDepartmentName()}" th:value="${dept.getId()}"></option>
+			</select>
+		</div>
+		<label>Birth</label><input type="text" name="birth" placeholder="2021/07/25"><br/>
+		<button type="submit">確認</button>
+	</form>
+</div>
+
+<a th:replace="~{commons/commons::botBar}"></a>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div th:insert="~{commons/commons::topBar}"></div>
+
+<div>
+	<form th:action="@{/updateEmp}" method="post">
+		<input type="hidden" name="id" th:value=${emp.getId()}>
+		<label>LastName</label><input type="text" th:value="${emp.getLastName()}" name="lastName" ><br/>
+		<label>Email</label><input type="email" th:value="${emp.getEmail()}" name="email">
+		<div>
+			<label>Gender</label>
+				<input type="radio" th:checked="${emp.getGender()==1}" name="gender" value="1"><label>男</label>
+				<input type="radio" th:checked="${emp.getGender()==0}" name="gender" value="0"><label>女</label>
+		</div>
+		<div>
+			<label>department</label>
+			<select name="department.id">
+				<option th:selected="${dept.getId()==emp.getDepartment().getId()}" th:each="dept:${departments}" th:text="${dept.getDepartmentName()}" th:value="${dept.getId()}"></option>
+			</select>
+		</div>
+		<label>Birth</label><input type="text" th:value="${#dates.format(emp.getBirth(), 'yyyy/MM/dd')}" name="birth"><br/>
+		<button type="submit">確認</button>
+	</form>
+</div>
+
+<a th:replace="~{commons/commons::botBar}"></a>
+
+</body>
+</html>

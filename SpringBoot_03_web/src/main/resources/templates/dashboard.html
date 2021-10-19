@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div th:insert="~{commons/commons::topBar}"></div>
+
+<p>歡迎 [[${session.loginUser}]]</p>
+
+<a th:href="@{/emps}">員工管理</a><br/>
+
+<a th:replace="~{commons/commons::botBar}"></a>
+
+</body>
+</html>
